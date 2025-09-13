@@ -1,6 +1,6 @@
 # Probation Projects'25
 
-Jai hind and welcome to Team Conatus Probation Projects for 2024!👋✨
+Jai hind and welcome to Team Conatus Probation Projects for 2025!👋✨
 
 ## How to add your project to this repository?
 
