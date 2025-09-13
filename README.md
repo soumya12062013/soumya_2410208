@@ -8,7 +8,7 @@ Jai hind and welcome to Team Conatus Probation Projects for 2025!👋✨
 
 2. Clone the repository into your local
    ```
-   git clone https://github.com/{your_id}/Probation-Projects-24.git
+   git clone https://github.com/{your_id}/Probation-Project-25.git
    ```
 
 3. Create a branch
