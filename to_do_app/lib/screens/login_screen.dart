@@ -28,6 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
             color: Colors.white,
             fontSize: 24,
             fontWeight: FontWeight.w500,
+            backgroundColor: Colors.black,
           ),
         ),
       ),
@@ -69,16 +70,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Container(height: 10),
-
-              ElevatedButton(
-                onPressed: () {
-                  // Handle login logic here
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white,
+              SizedBox(
+                width: 200,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Handle login logic here
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    foregroundColor: Colors.white,
+                  ),
+                  child: Text('Login'),
                 ),
-                child: Text('Login'),
               ),
               Container(height: 20),
             ],
