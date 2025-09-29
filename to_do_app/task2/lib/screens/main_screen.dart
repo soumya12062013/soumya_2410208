@@ -6,9 +6,36 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  int _selectedIndex = 0;
+  DateTime? _selectedDate;
+  void _onItemTapped(int index) async {
+    if (index == 0) {
+      DateTime? pickedDate = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2100),
+      );
+      if (pickedDate != null) {
+        setState(() {
+          _selectedDate = pickedDate;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Selected date: ${pickedDate.toLocal()}")),
+        );
+      } else {
+        setState(() {
+          _selectedIndex = index;
+        });
+      }
+    }
+    ;
+  }
+
   @override
   Widget build(BuildContext context) {
-    backgroundColor: Colors.black;
+    backgroundColor:
+    Colors.black;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -27,9 +54,43 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
       ),
-      body: Center(child: Container(
-        child:Text('')
-      )),
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(width: 500),
+            Image.asset('/assets/Images/Frame 161.png'),
+            SizedBox(width: 20),
+            Container(
+              child: Text(
+                'What do you want to do today?',
+                style: TextStyle(fontSize: 24, color: Colors.white),
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today, color: Colors.white),
+            label: 'Calendar',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.schedule, color: Colors.white),
+            label: 'Focus',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_circle, color: Colors.blue),
+            label: 'Tasks',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings, color: Colors.white),
+            label: 'Settings',
+          ),
+        ],
+      ),
     );
   }
 }
