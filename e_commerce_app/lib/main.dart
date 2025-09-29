@@ -4,7 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'screens/splash_screen.dart';
 import 'screens/wishlist_screen.dart';
 import 'screens/signin_screen.dart';
-import 'screens/home_screen.dart';
+//import 'screens/home_screen.dart';
 
 void main() {
   runApp(const EcommerceApp());
@@ -41,11 +41,12 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   static const List<Widget> _screens = <Widget>[
+    // HomeScreen(),
     WishlistScreen(),
-    HomeScreen(),
     Center(child: Text('Cart Page')),
     Center(child: Text('Profile page')),
   ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
