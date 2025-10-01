@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'main_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -6,21 +8,44 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  var emailController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
 
-  var passwordController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  Future<void> loginUser() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+
+      // ✅ Navigate to home if successful
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Login Successful!")));
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => MainScreen()),
+      );
+    } on FirebaseAuthException catch (e) {
+      // 🛑 Show error if login fails
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(e.message ?? "Login Failed")));
+    }
+  }
 
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
-    ;
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           'Login',
@@ -28,12 +53,13 @@ class _LoginScreenState extends State<LoginScreen> {
             color: Colors.white,
             fontSize: 24,
             fontWeight: FontWeight.w500,
-            backgroundColor: Colors.black,
+            // backgroundColor: Colors.black,
           ),
         ),
       ),
       body: Center(
         child: Form(
+          key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,6 +74,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderSide: BorderSide(color: Colors.white),
                   ),
                 ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Please enter your email";
+                  }
+                  if (!RegExp(
+                    r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                  ).hasMatch(value)) {
+                    return "Please enter a valid email address";
+                  }
+                  return null;
+                },
                 style: TextStyle(color: Colors.white),
               ),
               SizedBox(height: 20),
@@ -68,6 +105,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                   ),
                 ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Please enter your password";
+                  }
+                  return null;
+                },
               ),
               Container(height: 10),
               SizedBox(
@@ -75,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Handle login logic here
+                    Navigator.pushNamed(context, 'Main_Screen');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,

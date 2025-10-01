@@ -7,10 +7,21 @@ class CreateAccScreen extends StatefulWidget {
 }
 
 class _CreateAccScreenState extends State<CreateAccScreen> {
-  var usernameController = TextEditingController();
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
-  var confirmPasswordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    usernameController.dispose();
+    super.dispose();
+  }
 
   @override
   build(BuildContext context) {
@@ -43,12 +54,13 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                   ),
                 ),
               ),
-              Container(
+              Padding(
+                padding: EdgeInsets.only(left: 20),
                 child: Text(
                   'Email',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 12,
                     fontWeight: FontWeight.w200,
                   ),
                 ),
@@ -63,6 +75,18 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                     borderSide: BorderSide(color: Colors.white),
                   ),
                 ),
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Please enter your email";
+                  }
+                  if (!RegExp(
+                    r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                  ).hasMatch(value)) {
+                    return "Please enter a valid email address";
+                  }
+                  return null;
+                },
               ),
               Container(
                 child: Text(
@@ -85,6 +109,16 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                     borderSide: BorderSide(color: Colors.white),
                   ),
                 ),
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Please enter your password";
+                  }
+                  if (value.length < 6) {
+                    return "Password must be at least 6 characters long";
+                  }
+                  return null;
+                },
               ),
               Container(
                 child: Text(
@@ -107,18 +141,27 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                     borderSide: BorderSide(color: Colors.white),
                   ),
                 ),
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Please enter your password";
+                  }
+                  if (value != passwordController.text) {
+                    return "Passwords do not match";
+                  }
+                  return null;
+                },
               ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Handle create account logic here
                   Navigator.pushNamed(context, 'Main_Screen');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
                   foregroundColor: Colors.white,
                 ),
-                child: Text('Register'),
+                child: Text('Create Account'),
               ),
             ],
           ),

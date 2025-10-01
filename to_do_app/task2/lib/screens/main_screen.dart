@@ -34,10 +34,10 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    backgroundColor:
-    Colors.black;
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: Text(
           'Index',
           style: TextStyle(fontSize: 24, color: Colors.white),
@@ -48,7 +48,7 @@ class _MainScreenState extends State<MainScreen> {
             child: GestureDetector(
               onTap: () {},
               child: CircleAvatar(
-                backgroundImage: AssetImage('Assets/Images/my_pic.jpg'),
+                backgroundImage: AssetImage('assets/Images/my_pic.jpg'),
               ),
             ),
           ),
@@ -58,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
         child: Column(
           children: [
             SizedBox(width: 500),
-            Image.asset('/assets/Images/Frame 161.png'),
+            Image.asset("assetsImages/Frame 161.png"),
             SizedBox(width: 20),
             Container(
               child: Text(
@@ -70,23 +70,29 @@ class _MainScreenState extends State<MainScreen> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        useLegacyColorScheme: false,
+
+        backgroundColor: const Color.fromARGB(255, 87, 83, 83),
+
+        fixedColor: Colors.blue,
+        type: BottomNavigationBarType.shifting,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today, color: Colors.white),
+            icon: Icon(Icons.calendar_today, color: Colors.red),
             label: 'Calendar',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.schedule, color: Colors.white),
+            icon: Icon(Icons.schedule, color: Colors.red),
             label: 'Focus',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle, color: Colors.blue),
+            icon: Icon(Icons.add_circle, color: Colors.red),
             label: 'Tasks',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings, color: Colors.white),
+            icon: Icon(Icons.settings, color: Colors.red),
             label: 'Settings',
           ),
         ],
