@@ -27,6 +27,15 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
   build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: Text('Create Account', style: TextStyle(fontSize: 24)),
+        backgroundColor: Colors.transparent,
+        titleTextStyle: const TextStyle(
+          color: Colors.white,
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
       body: Center(
         child: (Form(
           child: Column(
@@ -38,14 +47,15 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                   'username',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w200,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
               TextFormField(
                 controller: usernameController,
                 keyboardType: TextInputType.text,
+                style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   hintText: 'Enter your username',
                   border: OutlineInputBorder(
@@ -61,13 +71,14 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,
-                    fontWeight: FontWeight.w200,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
               TextFormField(
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
+                style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   hintText: 'Enter your email',
                   border: OutlineInputBorder(
@@ -93,14 +104,15 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                   'Password',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w200,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
               TextFormField(
                 controller: passwordController,
                 keyboardType: TextInputType.visiblePassword,
+                style: const TextStyle(color: Colors.white),
                 obscureText: true,
                 decoration: InputDecoration(
                   hintText: 'Enter your password',
@@ -125,14 +137,15 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                   'Confirm Password',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w200,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
               TextFormField(
                 controller: confirmPasswordController,
                 keyboardType: TextInputType.visiblePassword,
+                style: const TextStyle(color: Colors.white),
                 obscureText: true,
                 decoration: InputDecoration(
                   hintText: ' Confirm password',
@@ -155,7 +168,7 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, 'Main_Screen');
+                  Navigator.pushReplacementNamed(context, 'Main_Screen');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,

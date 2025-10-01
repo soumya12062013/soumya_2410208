@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "281027365261",
-    "project_id": "todoapp-30fe9",
-    "storage_bucket": "todoapp-30fe9.firebasestorage.app"
+    "project_number": "1001360980093",
+    "project_id": "task2conatus",
+    "storage_bucket": "task2conatus.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:281027365261:android:887289ef2ed1d9754515c4",
+        "mobilesdk_app_id": "1:1001360980093:android:a58b713be0dc3aabd41914",
         "android_client_info": {
           "package_name": "com.example.task2"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC74tnfLhMVbQo9vLmpXp-hRRx8qdj8-bY"
+          "current_key": "AIzaSyCherUjwZaSgrmWa66qP0e-RVT7X8rJhn0"
         }
       ],
       "services": {

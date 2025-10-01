@@ -35,13 +35,8 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text(
-          'Index',
-          style: TextStyle(fontSize: 24, color: Colors.white),
-        ),
+        title: Text('Index', style: TextStyle(fontSize: 24, color: Colors.red)),
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 12.0),
@@ -58,23 +53,29 @@ class _MainScreenState extends State<MainScreen> {
         child: Column(
           children: [
             SizedBox(width: 500),
-            Image.asset("assetsImages/Frame 161.png"),
+            Image.asset("assets/Images/Frame 161.png"),
             SizedBox(width: 20),
             Container(
               child: Text(
-                'What do you want to do today?',
-                style: TextStyle(fontSize: 24, color: Colors.white),
+                ' Click on the + button to add a task',
+                style: TextStyle(fontSize: 20, color: Colors.red),
               ),
             ),
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, 'Task_Screen');
+        },
+        backgroundColor: Colors.red,
+        child: Icon(Icons.add, color: Colors.white),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
         useLegacyColorScheme: false,
-
-        backgroundColor: const Color.fromARGB(255, 87, 83, 83),
-
-        fixedColor: Colors.blue,
+        selectedItemColor: Colors.red,
+        unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.shifting,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
@@ -82,18 +83,22 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today, color: Colors.red),
             label: 'Calendar',
+            //backgroundColor: Colors.black87,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.schedule, color: Colors.red),
             label: 'Focus',
+            // backgroundColor: Colors.black87,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle, color: Colors.red),
-            label: 'Tasks',
+            icon: Icon(Icons.flag, color: Colors.red),
+            label: 'Priority',
+            //backgroundColor: Colors.black87,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings, color: Colors.red),
             label: 'Settings',
+            // backgroundColor: Colors.black87,
           ),
         ],
       ),

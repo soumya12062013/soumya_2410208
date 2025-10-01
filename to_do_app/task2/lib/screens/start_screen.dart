@@ -32,7 +32,7 @@ class StartScreen extends StatelessWidget {
 
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'Login_Screen');
+                Navigator.pushReplacementNamed(context, 'Login_Screen');
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,
@@ -44,7 +44,7 @@ class StartScreen extends StatelessWidget {
             // second button
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'Create_Acc_Screen');
+                Navigator.pushReplacementNamed(context, 'Create_Acc_Screen');
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,

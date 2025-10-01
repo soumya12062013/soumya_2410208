@@ -6,8 +6,9 @@ import 'screens/login_screen.dart';
 import 'screens/splash_screen.dart';
 import 'screens/start_screen.dart';
 import 'screens/main_screen.dart';
+import 'screens/task_screen.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
@@ -20,6 +21,7 @@ void main() async {
         'Login_Screen': (context) => LoginScreen(),
         'Create_Acc_Screen': (context) => CreateAccScreen(),
         'Main_Screen': (context) => MainScreen(),
+        'Task_Screen': (context) => TaskScreen(),
       },
     ),
   );
